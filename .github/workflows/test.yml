@@ -15,18 +15,18 @@ jobs:
         node-version: [16.x]
 
     steps:
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+            
         - name: Checkout
           uses: actions/checkout@v3
           with:
             repository: maya-trenser/cornerstone3D
             ref: maya-trenser-patch-1
             path: ./cornerstone3D
-
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-
+            
         - name: Build
           run: |
             cd ./cornerstone3D
@@ -39,22 +39,14 @@ jobs:
             repository: maya-trenser/Viewers
             path: ./Viewers
 
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-
-        - name: Install
+        - name: Link
           run: |
-            cd ./Viewers
+            cd ./cornerstone3D/packages/dicomImageLoader/dist
             pwd
+            yarn link
+            cd ./Viewers
+            yarn link @cornerstonejs/dicom-image-loader
             yarn install
-
-        - name: Copy
-          run: |
-            pwd
-            cp -a ./cornerstone3D/packages/dicomImageLoader/dist ./Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
-            cd ./Viewers
             yarn run build
 
   test:
