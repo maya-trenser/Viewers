@@ -37,9 +37,11 @@ jobs:
       name: development
       url: https://github.com/${{ github.repository }}/releases/tag/1
     runs-on: ubuntu-latest
+    needs:
+      build
     steps:
     - name: Download
       uses: actions/download-artifact@v3
       with:
         name: my-artifact
-        path: platform/app/dist
+        path: platform/app
