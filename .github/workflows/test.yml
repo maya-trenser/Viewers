@@ -19,7 +19,7 @@ jobs:
           uses: actions/checkout@v3
           with:
             repository: maya-trenser/cornerstone3D
-            path: './cornerstone3D'
+            path: ./cornerstone3D
 
         - name: Use Node.js ${{ matrix.node-version }}
           uses: actions/setup-node@v3
@@ -28,6 +28,7 @@ jobs:
 
         - name: Build
           run: |
+            cd ./cornerstone3D
             yarn install
             yarn build:all
 
@@ -45,7 +46,7 @@ jobs:
         - uses: actions/checkout@v3
           with:
             repository: maya-trenser/Viewers
-            path: './Viewers'
+            path: ./Viewers
         - name: Use Node.js ${{ matrix.node-version }}
           uses: actions/setup-node@v3
           with:
