@@ -29,6 +29,7 @@ jobs:
         - name: Build
           run: |
             cd ./cornerstone3D
+            pwd
             yarn install
             yarn build:all
 
@@ -56,10 +57,12 @@ jobs:
         - name: Install
           run: |
             cd ./Viewers
+            pwd
             yarn install
 
         - name: Copy
           run: |
+            pwd
             cp -a ./cornerstone3D/cornerstone3D/packages/dicomImageLoader/dist ./Viewers/Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
             cd ./Viewers
             yarn run build
