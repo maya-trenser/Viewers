@@ -47,40 +47,28 @@ jobs:
           with:
             repository: maya-trenser/Viewers
             path: ./Viewers
+
         - name: Use Node.js ${{ matrix.node-version }}
           uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.node-version }}
 
-        - name: Build
+        - name: Install
           run: |
             cd ./Viewers
             yarn install
-  buildViewer:
-    runs-on: ubuntu-latest
 
-    needs: [installViewer, buildCornerstone3D]
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    steps:
-    - name: Build
-      run:  |
-        cd ./Viewers
-        npm run build
-
-    - name: Upload
-      uses: actions/upload-artifact@v3
-      with:
-        name: my-artifact
-        path: platform/app/dist
+        - name: Copy
+          run: |
+            cd ..
+            cp -a ./cornerstone3D/packages/dicomImageLoader/dist. ./Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
+            cd ./Viewers
+            yarn run build
 
   test:
     runs-on: ubuntu-latest
     needs:
-      buildViewer
+      installViewer
     steps:
     - name: echooo
       run: |
