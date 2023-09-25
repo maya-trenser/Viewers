@@ -1,10 +1,8 @@
-JamesIves/github-pages-deploy-action@v4
-
 name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "new-branch" ]
+    branches: [ "maya-trenser-patch-2" ]
   pull_request:
     branches: [ "master" ]
 
@@ -29,6 +27,6 @@ jobs:
         yarn install
         npm run build
     - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: platform/app/dist # The folder the action should deploy.
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: platform/app/dist # The folder the action should deploy.
