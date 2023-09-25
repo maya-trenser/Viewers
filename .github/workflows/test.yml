@@ -28,6 +28,7 @@ jobs:
 
         - name: Build
           run: |
+            cd ./cornerstone3D
             yarn install
             yarn build:all
 
@@ -52,8 +53,9 @@ jobs:
             node-version: ${{ matrix.node-version }}
 
         - name: Build
-          run: yarn install
-
+          run: |
+            cd ./Viewers
+            yarn install
   buildViewer:
     runs-on: ubuntu-latest
 
