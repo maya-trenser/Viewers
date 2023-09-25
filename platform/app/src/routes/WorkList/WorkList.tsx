@@ -271,7 +271,7 @@ function WorkList({
           content: (
             <>
               {studyDate && <span className="mr-4">{studyDate}</span>}
-              {studyTime && <span>{studyTime}</span>}
+              {studyTime && <span>{studyDate}</span>}
             </>
           ),
           title: `${studyDate || ''} ${studyTime || ''}`,
