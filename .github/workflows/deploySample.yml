@@ -27,7 +27,7 @@ jobs:
     - name: Build
       run: |
         yarn install
-        npm run build
+        yarn run build:ghPages
         
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
