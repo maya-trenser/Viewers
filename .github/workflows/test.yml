@@ -7,7 +7,31 @@ on:
     branches: [ "master" ]
 
 jobs:
-  install:
+  buildCornerstone3D:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/cornerstone3D
+            path: './cornerstone3D'
+
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+
+        - name: Build
+          run: |
+            yarn install
+            yarn build:all
+
+  installViewer:
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,33 +49,10 @@ jobs:
         - name: Build
           run: yarn install
 
-  buildCornerstone3D:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-          with:
-            repository: maya-trenser/cornerstone3D
-
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-
-        - name: Build
-          run: |
-            yarn install
-            yarn build:all
-
   buildViewer:
     runs-on: ubuntu-latest
 
-    needs: [install, buildCornerstone3D]
+    needs: [installViewer, buildCornerstone3D]
 
     strategy:
       matrix:
