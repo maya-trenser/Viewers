@@ -31,3 +31,15 @@ jobs:
       with:
         name: my-artifact
         path: platform/app/dist
+        
+  deploy:
+    environment:
+      name: development
+      url: https://github.com/${{ github.repository }}/releases/tag/1
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: dist
