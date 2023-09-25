@@ -33,17 +33,6 @@ jobs:
             yarn install
             yarn build:all
 
-  installViewer:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    needs:
-      buildCornerstone3D
-
-    steps:
         - uses: actions/checkout@v3
           with:
             repository: maya-trenser/Viewers
@@ -63,14 +52,14 @@ jobs:
         - name: Copy
           run: |
             pwd
-            cp -a ./cornerstone3D/cornerstone3D/packages/dicomImageLoader/dist ./Viewers/Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
+            cp -a ./cornerstone3D/packages/dicomImageLoader/dist ./Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
             cd ./Viewers
             yarn run build
 
   test:
     runs-on: ubuntu-latest
     needs:
-      installViewer
+      buildCornerstone3D
     steps:
     - name: echooo
       run: |
