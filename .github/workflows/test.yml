@@ -60,7 +60,7 @@ jobs:
 
         - name: Copy
           run: |
-            cp -a ./cornerstone3D/packages/dicomImageLoader/dist ./Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
+            cp -a ./cornerstone3D/cornerstone3D/packages/dicomImageLoader/dist ./Viewers/Viewers/node_modules/@cornerstonejs/dicom-image-loader/dist
             cd ./Viewers
             yarn run build
 
