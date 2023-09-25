@@ -18,7 +18,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v3
           with:
-            repository: maya-trenser/cornerstone3D
+            repository: maya-trenser/cornerstone3D/maya-trenser-patch-1
             path: ./cornerstone3D
 
         - name: Use Node.js ${{ matrix.node-version }}
