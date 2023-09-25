@@ -28,7 +28,6 @@ jobs:
 
         - name: Build
           run: |
-            cd ./cornerstone3D
             yarn install
             yarn build:all
 
