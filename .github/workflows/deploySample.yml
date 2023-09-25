@@ -24,7 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: BuildViewer
       run: |
         yarn install
         yarn run build:ghPages
