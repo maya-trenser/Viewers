@@ -24,7 +24,7 @@ jobs:
 
         - name: Copy
           run: |
-            echo ${{ secretes.GITHUB_TOKEN }}
+            echo ${{ GITHUB_TOKEN }}
             pwd
             ls -a ./maya-trenser.github.io
             mv ./maya-trenser.github.io/.git /tmp/
