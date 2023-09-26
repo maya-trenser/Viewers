@@ -19,21 +19,20 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.node-version }}
-            
+
         - name: Checkout
           uses: actions/checkout@v3
           with:
             repository: maya-trenser/cornerstone3D
             ref: maya-trenser-patch-1
             path: ./cornerstone3D
-            
+
         - name: Build
           run: |
             cd ./cornerstone3D
             pwd
             yarn install
             yarn build:all
-
         - uses: actions/checkout@v3
           with:
             repository: maya-trenser/Viewers
@@ -49,6 +48,22 @@ jobs:
             yarn install
             yarn run build
 
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/maya-trenser.github.io
+            path: ./maya-trenser.github.io
+
+        - name: Copy
+          run: |
+            pwd
+            rm -r ./maya-trenser.github.io
+            cp -r ./Viewers/platform/app/dist/ ./maya-trenser.github.io
+
   test:
     runs-on: ubuntu-latest
     needs:
@@ -57,3 +72,4 @@ jobs:
     - name: echooo
       run: |
         echo "If you can read this, succeeded"
+Update test.yml · maya-trenser/Viewers@461e1d7
