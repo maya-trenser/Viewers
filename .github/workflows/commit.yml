@@ -20,10 +20,11 @@ jobs:
           with:
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ GITHUB_TOKEN }}
 
         - name: Copy
           run: |
+            echo ${{ secretes.GITHUB_TOKEN }}
             pwd
             ls -a ./maya-trenser.github.io
             mv ./maya-trenser.github.io/.git /tmp/
@@ -34,7 +35,7 @@ jobs:
             git config --global user.name "maya-trenser"
             git config --global user.email "maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com"
             git commit -a -m "publishing viewer"
-            git push origin https://maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com/maya-trenser.github.io
+            git push origin https://maya-trenser:${{ GITHUB_TOKEN }}@github.com/maya-trenser.github.io
 
   test:
     runs-on: ubuntu-latest
