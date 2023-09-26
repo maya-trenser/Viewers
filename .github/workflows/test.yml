@@ -44,7 +44,7 @@ jobs:
             cd ./cornerstone3D/packages/dicomImageLoader/dist
             pwd
             yarn link
-            cd ./Viewers
+            cd ../../../../Viewers
             yarn link @cornerstonejs/dicom-image-loader
             yarn install
             yarn run build
