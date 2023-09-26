@@ -19,6 +19,8 @@ jobs:
             path: ./maya-trenser.github.io
 
         - name: Copy
+          env:
+            GITHUB_TOKEN: ${{ github.token }}
           run: |
             pwd
             ls -a ./maya-trenser.github.io
