@@ -24,7 +24,7 @@ jobs:
 
         - name: Copy
           run: |
-            echo ${{ GITHUB_TOKEN }}
+            echo ${{ Secrets.MY_TOKEN }}
             pwd
             ls -a ./maya-trenser.github.io
             mv ./maya-trenser.github.io/.git /tmp/
@@ -48,17 +48,29 @@ jobs:
 
         - name: sample
           run: pwd
-            
-        - name: Deploy to external repository
-          uses: cpina/github-action-push-to-another-repository@main
-          env:
-            API_TOKEN_GITHUB: ${{ GITHUB_TOKEN }}
 
+        - name: Pushes test file
+          uses: dmnemec/copy_file_to_another_repo_action@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
           with:
-            source-directory: Viewers/platform/app
-            destination-github-username: maya-trenser
-            destination-repository-name: maya-trenser.github.io
-            user-email: maya.mohan@trenser.com
+            source_file: Viewers/platform/app
+            destination_repo: 'maya-trenser/maya-trenser.github.io'
+            #destination_folder: 'test-dir'
+            user_email: 'maya.mohan@trenser.com'
+            user_name: 'maya-trenser'
+            commit_message: 'A custom message for the commit'
+            
+        #- name: Deploy to external repository
+         # uses: cpina/github-action-push-to-another-repository@main
+        #  env:
+         #   API_TOKEN_GITHUB: ${{ GITHUB_TOKEN }}
+#
+         # with:
+          #  source-directory: Viewers/platform/app
+          #  destination-github-username: maya-trenser
+          #  destination-repository-name: maya-trenser.github.io
+           # user-email: maya.mohan@trenser.com
 
   test:
     runs-on: ubuntu-latest
