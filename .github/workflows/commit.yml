@@ -32,7 +32,7 @@ jobs:
             rm -r ./maya-trenser.github.io/*
             mv /tmp/.git ./maya-trenser.github.io
             ls -a ./maya-trenser.github.io
-            cd ./maya-trenser.github.io
+            #cd ./maya-trenser.github.io
             git config --global user.name "maya-trenser"
             git config --global user.email "maya.mohan@trenser.com"
             git config --list
