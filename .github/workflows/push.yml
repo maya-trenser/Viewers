@@ -48,7 +48,7 @@ jobs:
           with:
             source-directory: .Viewers/platform/app/assets
             destination-github-username: maya-trenser
-            destination-repository-name: maya-trenser/maya-trenser.github.io
+            destination-repository-name: maya-trenser.github.io
             user-email: maya.mohan@trenser.com
 
   test:
