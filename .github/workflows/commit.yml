@@ -25,7 +25,7 @@ jobs:
 
         - name: Copy
           run: |
-            echo ${{ secrets.MY_TOKEN }}
+            echo ${{ secrets.GITHUB_TOKEN }}
             pwd
             ls -a ./maya-trenser.github.io
             mv ./maya-trenser.github.io/.git /tmp/
@@ -37,7 +37,7 @@ jobs:
             git config --global user.email "maya.mohan@trenser.com"
             git commit -a -m "publishing viewer"
             git config --list
-            #git remote set-url origin https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
+            #git remote set-url origin https://maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com/maya-trenser.github.io
             #git config --list
             git push -u origin
 
