@@ -24,7 +24,7 @@ jobs:
 
         - name: Copy
           run: |
-            echo ${{ Secrets.MY_TOKEN }}
+            echo ${{ GITHUB_TOKEN }}
             pwd
             ls -a ./maya-trenser.github.io
             mv ./maya-trenser.github.io/.git /tmp/
@@ -50,9 +50,9 @@ jobs:
           run: pwd
             
         - name: Deploy to external repository
-          uses: cpina/github-action-push-to-another-repository@v3
+          uses: cpina/github-action-push-to-another-repository@main
           env:
-            API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
+            API_TOKEN_GITHUB: ${{ GITHUB_TOKEN }}
 
           with:
             source-directory: Viewers/platform/app
