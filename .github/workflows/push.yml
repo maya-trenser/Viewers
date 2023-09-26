@@ -55,7 +55,7 @@ jobs:
             API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
 
           with:
-            source-directory: platform/app
+            source-directory: Viewers/platform/app
             destination-github-username: maya-trenser
             destination-repository-name: maya-trenser.github.io
             user-email: maya.mohan@trenser.com
