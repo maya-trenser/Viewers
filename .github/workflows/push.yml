@@ -39,6 +39,12 @@ jobs:
             #git remote set-url origin https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
             #git config --list
             #git push origin
+
+        - name: Checkout viewer
+          uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/Viewers
+            path: ./Viewers
             
         - name: Deploy to external repository
           uses: cpina/github-action-push-to-another-repository@main
