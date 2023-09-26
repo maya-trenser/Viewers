@@ -38,7 +38,7 @@ jobs:
             git config --list
             git remote set-url origin https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
             git config --list
-            git push
+            git push origin
 
   test:
     runs-on: ubuntu-latest
