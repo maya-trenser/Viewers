@@ -35,6 +35,7 @@ jobs:
             git config --global user.name "maya-trenser"
             git config --global user.email "maya-trenser:${{ Secrets.MY_TOKEN }}@github.com"
             git commit -a -m "publishing viewer"
+            git config --list
             #git push origin https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
 
   test:
