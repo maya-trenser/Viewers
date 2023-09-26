@@ -18,6 +18,7 @@ jobs:
         - name: Checkout gh page
           uses: actions/checkout@v3
           with:
+            github-server-url: https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
 
@@ -32,9 +33,9 @@ jobs:
             ls -a ./maya-trenser.github.io
             cd ./maya-trenser.github.io
             git config --global user.name "maya-trenser"
-            git config --global user.email "maya-trenser:${{ secrets.Secrets.MY_TOKEN }}@github.com"
+            git config --global user.email "maya.mohan@trenser.com"
             git commit -a -m "publishing viewer"
-            git push origin https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
+            git push
 
   test:
     runs-on: ubuntu-latest
