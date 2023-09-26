@@ -50,7 +50,7 @@ jobs:
           run: pwd
             
         - name: Deploy to external repository
-          uses: cpina/github-action-push-to-another-repository@v2
+          uses: cpina/github-action-push-to-another-repository@v3
           env:
             API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
 
