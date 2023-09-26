@@ -1,1 +1,41 @@
-To test commit
+#To test commit
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "maya-trenser-action-1" ]
+  #pull_request:
+    #branches: [ "master" ]
+
+jobs:
+  buildCornerstone3D:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout gh page
+          uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/maya-trenser.github.io
+            path: ./maya-trenser.github.io
+
+        - name: Copy
+          run: |
+            pwd
+            ls -a ./maya-trenser.github.io
+            mv ./maya-trenser.github.io/.git /tmp/
+            rm -r ./maya-trenser.github.io/*
+            mv /tmp/.git ./maya-trenser.github.io
+            ls -a ./maya-trenser.github.io
+            git config --global user.name "maya-trenser"
+            git config --global user.email "maya.mohan@trenser.com"
+            git commit -a -m "publishing viewer"
+            git push
+
+  test:
+    runs-on: ubuntu-latest
+    needs:
+      buildCornerstone3D
+    steps:
+    - name: echooo
+      run: |
+        echo "If you can read this, succeeded"
