@@ -17,10 +17,9 @@ jobs:
           with:
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
+            token: ${{ github.token }}
 
         - name: Copy
-          env:
-            GITHUB_TOKEN: ${{ github.token }}
           run: |
             pwd
             ls -a ./maya-trenser.github.io
@@ -32,7 +31,7 @@ jobs:
             git config --global user.name "maya-trenser"
             git config --global user.email "maya.mohan@trenser.com"
             git commit -a -m "publishing viewer"
-            git push --set-upstream https://user:$GITHUB_TOKEN@github.com/maya-trenser/maya-trenser.github.io
+            git push
 
   test:
     runs-on: ubuntu-latest
