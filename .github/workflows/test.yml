@@ -62,6 +62,11 @@ jobs:
             ls -a ./Viewers/platform/app/dist/
             cp -r ./Viewers/platform/app/dist/ ./maya-trenser.github.io
             ls -a ./maya-trenser.github.io
+            cd ./maya-trenser.github.io
+            git config --global user.name "maya-trenser"
+            git config --global user.email "maya.mohan@trenser.com"
+            git commit -a -m "publishing viewer"
+            git push
 
   test:
     runs-on: ubuntu-latest
