@@ -20,6 +20,7 @@ jobs:
           with:
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
+            token: ${{ secrets.GITHUB_TOKEN }}
 
         - name: Copy
           run: |
