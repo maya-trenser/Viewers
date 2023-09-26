@@ -45,6 +45,9 @@ jobs:
           with:
             repository: maya-trenser/Viewers
             path: ./Viewers
+
+        - name: sample
+          run: pwd
             
         - name: Deploy to external repository
           uses: cpina/github-action-push-to-another-repository@main
@@ -52,7 +55,7 @@ jobs:
             API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
 
           with:
-            source-directory: /platform/app/assets
+            source-directory: platform/app
             destination-github-username: maya-trenser
             destination-repository-name: maya-trenser.github.io
             user-email: maya.mohan@trenser.com
