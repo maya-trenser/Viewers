@@ -21,7 +21,7 @@ jobs:
             #github-server-url: https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.MY_TOKEN }}
 
         - name: Copy
           run: |
