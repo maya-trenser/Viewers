@@ -72,4 +72,3 @@ jobs:
     - name: echooo
       run: |
         echo "If you can read this, succeeded"
-Update test.yml · maya-trenser/Viewers@461e1d7
