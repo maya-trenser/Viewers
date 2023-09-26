@@ -36,9 +36,9 @@ jobs:
             git config --global user.email "maya.mohan@trenser.com"
             git commit -a -m "publishing viewer"
             git config --list
-            git remote set-url origin https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
-            git config --list
-            git push origin
+            #git remote set-url origin https://maya-trenser:${{ Secrets.MY_TOKEN }}@github.com/maya-trenser.github.io
+            #git config --list
+            git push
 
   test:
     runs-on: ubuntu-latest
