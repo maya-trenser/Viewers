@@ -38,7 +38,7 @@ jobs:
             git config --list
             #git remote set-url origin https://maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com/maya-trenser.github.io
             #git config --list
-            git remote set-url origin https://maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com/maya-trenser.github.io
+            git remote set-url origin https://maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com/maya-trenser/maya-trenser.github.io
             git config --list
             #git checkout "${GITHUB_REF:11}"
             git commit -a -m "publishing viewer"
