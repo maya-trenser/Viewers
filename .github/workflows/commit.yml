@@ -18,9 +18,10 @@ jobs:
         - name: Checkout gh page
           uses: actions/checkout@v3
           with:
-            github-server-url: https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com
+            #github-server-url: https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
+            token: ${{ secrets.MY_TOKEN }}
 
         - name: Copy
           run: |
