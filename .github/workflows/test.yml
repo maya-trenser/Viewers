@@ -1,8 +1,8 @@
 name: NodeJS with Webpack
 
 on:
-  #push:
-    #branches: [ "maya-trenser-action-1" ]
+  push:
+    branches: [ "maya-trenser-action-1" ]
   #pull_request:
     #branches: [ "master" ]
 
@@ -53,6 +53,7 @@ jobs:
           with:
             repository: maya-trenser/maya-trenser.github.io
             path: ./maya-trenser.github.io
+            token: ${{ secrets.MY_TOKEN }}
 
         - name: Copy
           run: |
@@ -68,8 +69,9 @@ jobs:
             cd ./maya-trenser.github.io
             git config --global user.name "maya-trenser"
             git config --global user.email "maya.mohan@trenser.com"
+            git remote set-url origin https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com/maya-trenser/maya-trenser.github.io
             git commit -a -m "publishing viewer"
-            git push
+            git push -u origin
 
   test:
     runs-on: ubuntu-latest
