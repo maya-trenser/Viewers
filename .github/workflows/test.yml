@@ -40,11 +40,28 @@ jobs:
 
         - name: Link
           run: |
+            #cd ./cornerstone3D/packages/dicomImageLoader/dist
+            #pwd
+            #yarn link
+            cd ./cornerstone3D/packages/adapters/dist
+            yarn link
+            cd ./cornerstone3D/packages/core/dist
+            yarn link
             cd ./cornerstone3D/packages/dicomImageLoader/dist
-            pwd
+            yarn link
+            cd ./cornerstone3D/packages/nifti-volume-loader/dist
+            yarn link
+            cd ./cornerstone3D/packages/streaming-image-volume-loader/dist
+            yarn link
+            cd ./cornerstone3D/packages/tools/dist
             yarn link
             cd ../../../../Viewers
+            yarn link @cornerstonejs/adapters
+            yarn link @cornerstonejs/core
             yarn link @cornerstonejs/dicom-image-loader
+            yarn link @cornerstonejs/nifti-volume-loader
+            yarn link @cornerstonejs/streaming-image-volume-loader
+            yarn link @cornerstonejs/tools
             yarn install
             yarn run build
 
