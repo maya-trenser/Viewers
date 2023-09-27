@@ -59,7 +59,7 @@ jobs:
             yarn link @cornerstonejs/adapters
             yarn link @cornerstonejs/core
             yarn link @cornerstonejs/dicom-image-loader
-            yarn link @cornerstonejs/nifti-volume-loader
+            #yarn link @cornerstonejs/nifti-volume-loader
             yarn link @cornerstonejs/streaming-image-volume-loader
             yarn link @cornerstonejs/tools
             yarn install
