@@ -49,8 +49,8 @@ jobs:
             yarn link
             cd ../../dicomImageLoader/dist
             yarn link
-            cd ../../nifti-volume-loader/dist
-            yarn link
+            #cd ../../nifti-volume-loader/dist
+            #yarn link
             cd ../../streaming-image-volume-loader/dist
             yarn link
             cd ../../tools/dist
