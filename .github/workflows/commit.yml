@@ -2,8 +2,8 @@
 name: NodeJS with Webpack
 
 on:
-  push:
-    branches: [ "maya-trenser-action-1" ]
+  #push:
+    #branches: [ "maya-trenser-action-1" ]
   #pull_request:
     #branches: [ "master" ]
 
