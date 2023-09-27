@@ -70,6 +70,7 @@ jobs:
             git config --global user.name "maya-trenser"
             git config --global user.email "maya.mohan@trenser.com"
             git remote set-url origin https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com/maya-trenser/maya-trenser.github.io
+            git add .
             git commit -a -m "publishing viewer"
             git push -u origin
 
