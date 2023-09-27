@@ -45,15 +45,15 @@ jobs:
             #yarn link
             cd ./cornerstone3D/packages/adapters/dist
             yarn link
-            cd ./cornerstone3D/packages/core/dist
+            cd ../../core/dist
             yarn link
-            cd ./cornerstone3D/packages/dicomImageLoader/dist
+            cd ../../dicomImageLoader/dist
             yarn link
-            cd ./cornerstone3D/packages/nifti-volume-loader/dist
+            cd ../../nifti-volume-loader/dist
             yarn link
-            cd ./cornerstone3D/packages/streaming-image-volume-loader/dist
+            cd ../../streaming-image-volume-loader/dist
             yarn link
-            cd ./cornerstone3D/packages/tools/dist
+            cd ../../tools/dist
             yarn link
             cd ../../../../Viewers
             yarn link @cornerstonejs/adapters
