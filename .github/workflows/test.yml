@@ -60,7 +60,7 @@ jobs:
             pwd
             ls -a ./maya-trenser.github.io
             mv ./maya-trenser.github.io/.git /tmp/
-            rm -r ./maya-trenser.github.io/*
+            #rm -r ./maya-trenser.github.io/*
             mv /tmp/.git ./maya-trenser.github.io
             ls -a ./maya-trenser.github.io
             ls -a ./Viewers/platform/app/dist/
