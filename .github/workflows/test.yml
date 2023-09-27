@@ -1,0 +1,101 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "maya-trenser-action-1" ]
+  #pull_request:
+    #branches: [ "master" ]
+
+jobs:
+  buildCornerstone3D:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+
+        - name: Checkout
+          uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/cornerstone3D
+            ref: maya-trenser-patch-1
+            path: ./cornerstone3D
+
+        - name: Build
+          run: |
+            cd ./cornerstone3D
+            pwd
+            yarn install
+            yarn build:all
+        - uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/Viewers
+            path: ./Viewers
+
+        - name: Link
+          run: |
+            #cd ./cornerstone3D/packages/dicomImageLoader/dist
+            #pwd
+            #yarn link
+            cd ./cornerstone3D/packages/adapters/dist
+            yarn link
+            cd ../../core/dist
+            yarn link
+            cd ../../dicomImageLoader/dist
+            yarn link
+            #cd ../../nifti-volume-loader/dist
+            #yarn link
+            cd ../../streaming-image-volume-loader/dist
+            yarn link
+            cd ../../tools/dist
+            yarn link
+            cd ../../../../Viewers
+            yarn link @cornerstonejs/adapters
+            yarn link @cornerstonejs/core
+            yarn link @cornerstonejs/dicom-image-loader
+            #yarn link @cornerstonejs/nifti-volume-loader
+            yarn link @cornerstonejs/streaming-image-volume-loader
+            yarn link @cornerstonejs/tools
+            yarn install
+            yarn run build
+
+        - name: Checkout gh page
+          uses: actions/checkout@v3
+          with:
+            repository: maya-trenser/maya-trenser.github.io
+            path: ./maya-trenser.github.io
+            token: ${{ secrets.MY_TOKEN }}
+
+        - name: Copy
+          run: |
+            pwd
+            ls -a ./maya-trenser.github.io
+            mv ./maya-trenser.github.io/.git /tmp/
+            rm -r ./maya-trenser.github.io
+            #ls -a ./maya-trenser.github.io
+            #ls -a ./Viewers/platform/app/dist/
+            cp -r ./Viewers/platform/app/dist/ ./maya-trenser.github.io
+            mv /tmp/.git ./maya-trenser.github.io
+            ls -a ./maya-trenser.github.io
+            cd ./maya-trenser.github.io
+            git config --global user.name "maya-trenser"
+            git config --global user.email "maya.mohan@trenser.com"
+            git remote set-url origin https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com/maya-trenser/maya-trenser.github.io
+            git add .
+            git commit -a -m "publishing viewer"
+            git push -u origin
+
+  test:
+    runs-on: ubuntu-latest
+    needs:
+      buildCornerstone3D
+    steps:
+    - name: echooo
+      run: |
+        echo "If you can read this, succeeded"

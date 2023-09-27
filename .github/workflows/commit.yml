@@ -1,0 +1,54 @@
+#To test commit
+name: NodeJS with Webpack
+
+on:
+  #push:
+    #branches: [ "maya-trenser-action-1" ]
+  #pull_request:
+    #branches: [ "master" ]
+
+permissions:
+         contents: write
+         
+jobs:
+  buildCornerstone3D:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout gh page
+          uses: actions/checkout@v3
+          with:
+            #github-server-url: https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com
+            repository: maya-trenser/maya-trenser.github.io
+            path: ./maya-trenser.github.io
+            token: ${{ secrets.MY_TOKEN }}
+
+        - name: Copy
+          run: |
+            #echo ${{ secrets.MY_TOKEN }}
+            pwd
+            ls -a ./maya-trenser.github.io
+            mv ./maya-trenser.github.io/.git /tmp/
+            rm -r ./maya-trenser.github.io/*
+            mv /tmp/.git ./maya-trenser.github.io
+            ls -a ./maya-trenser.github.io
+            cd ./maya-trenser.github.io
+            git config --global user.name "maya-trenser"
+            git config --global user.email "maya.mohan@trenser.com"
+            git config --list
+            #git remote set-url origin https://maya-trenser:${{ secrets.GITHUB_TOKEN }}@github.com/maya-trenser.github.io
+            #git config --list
+            git remote set-url origin https://maya-trenser:${{ secrets.MY_TOKEN }}@github.com/maya-trenser/maya-trenser.github.io
+            git config --list
+            #git checkout "${GITHUB_REF:11}"
+            git commit -a -m "publishing viewer"
+            git push -u origin
+
+  test:
+    runs-on: ubuntu-latest
+    needs:
+      buildCornerstone3D
+    steps:
+    - name: echooo
+      run: |
+        echo "If you can read this, succeeded"
